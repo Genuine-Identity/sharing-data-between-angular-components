@@ -1,0 +1,50 @@
+<div class="container" style="padding :10px" appShadow>
+	{{ name }}
+</div>
+<hr>
+<h4> Message from parent to Child &#8681; </h4>
+<hr>
+<div [appShadow]="'hotpink'" [appShadowX]="'12px'" [appShadowY]="'6px'" [appShadowBlur]="'100px'">
+	<div>Parent component </div>
+	<div style="padding:20px">
+		<app-child [childMessage]='parentToChildMessage'></app-child>
+	</div>
+</div>
+<hr>
+<h4 style="pading-top:20px"> Child to Parent: Sharing Data via ViewChild &#8681; </h4>
+<hr>
+<div class="container" style="padding :10px">
+	<div [appShadow]="'green'" [appShadowX]="'12px'" [appShadowY]="'6px'" [appShadowBlur]="'100px'">
+		<div style="padding:10px">Parent component </div>
+		<div style="padding:10px">
+			<div>Parent component: message from child to parent using : View Child: {{ViewChildMessage}} </div>
+		</div>
+	</div>
+</div>
+<hr>
+
+<h4 style="pading-top:20px">Child to Parent: Sharing Data via Output() and EventEmitter &#8681; </h4>
+<hr>
+<div class="container" style="padding :10px">
+	<div [appShadow]="'green'" [appShadowX]="'12px'" [appShadowY]="'6px'" [appShadowBlur]="'100px'">
+		<app-child [childMessage]="'child component'" (messageEvent)="receiveMessage($event)"></app-child>
+		{{receivedMessage}}
+	</div>
+
+</div>
+<hr>
+
+<hr>
+
+<h4 style="pading-top:20px">Unrelated Components: Sharing Data with a Service &#8681; </h4>
+<hr>
+<div class="container" style="padding :10px">
+	<div class="row">
+		<div class="col-sm">
+		<app-sibling-2></app-sibling-2>
+		</div>
+		<div class="col-sm">
+			<app-sibling></app-sibling>
+		</div>
+	</div>
+</div>
